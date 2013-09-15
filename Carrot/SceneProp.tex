@@ -1,0 +1,74 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{amsmath}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+
+Amir Rahimi 810189215
+
+Advanced Robotics.
+
+homework 5
+\end{center}
+
+\section*{3.1}
+\subsection*{a)}
+The equations for the moving car are\\
+\\
+$x(t) = x(t-1) + \dot{x}(t-1) \times \Delta{t} + \frac{1}{2} \ddot{x}(t-1) \Delta{t}^2$\\
+$\Delta{t} = 1$\\
+$x(t) = x(t-1) + \dot{x}(t-1) + \frac{1}{2} \ddot{x}(t-1)$\\
+$\ddot{x} \sim N(0,1)$\\
+$x(t) = x(t-1) + \dot{x}(t-1) + \frac{1}{2} N(0,1)$\\
+$\dot{x}(t) = \dot{x}(t-1) + \ddot{x}(t-1) \Delta{t} = \dot{x}(t-1) + \ddot{x}(t-1)$\\
+
+The position x(t) depends on the previous velocity and position at time t-1.
+
+We can define the state as
+\begin{equation*}
+	\mathbf{X_t} = \left(
+		\begin{array}{c}
+		x(t) \\
+		\dot{x}(t)
+		\end{array} \right)
+\end{equation*}
+
+\subsection*{b)}
+
+The state transition probability $p(x_{t} | u_{t}, x_{t-1})$ must be linear function in its arguments with added gaussian noise:
+\begin{equation*}
+	\mathbf{X_{t} = A_{t} X_{t-1} + B_{t} u_{t} + \epsilon_{t} } 
+\end{equation*}
+
+so,
+
+\begin{equation*}
+	\mathbf{X_t} = \left(
+		\begin{array}{c}
+		x(t) \\
+		\dot{x}(t)
+		\end{array} \right) = 
+		\overbrace{
+		\left(
+			\begin{array}{cc}
+			1 & 1 \\
+			0 & 1 
+			\end{array} \right)}^{\mathbf{A_t} }
+			\left( 
+			\begin{array}{c} 
+				x(t-1) \\
+				\dot{x}(t-1)
+			\end{array} \right)
+			+
+			\overbrace{
+			\left( 
+			\begin{array}{c} 
+				0.5 \\
+				1
+			\end{array} \right)}^{\mathbf{B_t} }
+			N(0,1)
+\end{equation*}
+\end{document}
