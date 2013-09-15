@@ -20,7 +20,7 @@ Proposals and Depth from Stereo Images}}
 \item The goal is to jointly extract objects and estimate depths from stereo images
 \item Main contribution is to introduce the concept of 3D scene consistency in stereo matching
 \item Few works on 3D reasoning with respect to stereo images
-\item Object stereo: the goal was to improve depth estimation by object extraction.
+\item Object stereo [1]: the goal was to improve depth estimation by object extraction.
 \item This work: main focus is on object extraction.
 \item Inspired by the work of [12]. Proposed the following 3-step pipeline for object extraction:
 \begin{enumerate}
@@ -33,8 +33,15 @@ Proposals and Depth from Stereo Images}}
 \item disparity map
 \item object map: each pixel $\longrightarrow$ an object
 \end{enumerate}
+\item Object stereo [1]: did not introduce the concept of computing a pool of object maps.
+\item Key difference is objects in [1] were approximated by flat 2D planes. We enclose them by using a 3D bounding box
+$\Longrightarrow$ we can exploit physical constraints.
 \end{itemize}
 
+\section{Model}
+\begin{itemize}
+\item 
+\end{itemize}
 
 %\subsection*{a)}
 %The equations for the moving car are\\
