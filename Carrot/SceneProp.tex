@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{report}
+\documentclass[a4paper,12pt]{article}
 \usepackage{amsmath}
 \begin{document}
 
@@ -6,69 +6,90 @@
 In The Name of God.
 
 The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Extracting 3D Scene-consistent Object
 
-Amir Rahimi 810189215
+Proposals and Depth from Stereo Images}}
 
-Advanced Robotics.
-
-homework 5
+\vskip 0.2cm
+\tiny{By Michael Bleyer, Christoph Rhemann, and Carsten Rother}
 \end{center}
 
-\section*{3.1}
-\subsection*{a)}
-The equations for the moving car are\\
-\\
-$x(t) = x(t-1) + \dot{x}(t-1) \times \Delta{t} + \frac{1}{2} \ddot{x}(t-1) \Delta{t}^2$\\
-$\Delta{t} = 1$\\
-$x(t) = x(t-1) + \dot{x}(t-1) + \frac{1}{2} \ddot{x}(t-1)$\\
-$\ddot{x} \sim N(0,1)$\\
-$x(t) = x(t-1) + \dot{x}(t-1) + \frac{1}{2} N(0,1)$\\
-$\dot{x}(t) = \dot{x}(t-1) + \ddot{x}(t-1) \Delta{t} = \dot{x}(t-1) + \ddot{x}(t-1)$\\
+\section{Abstract and Introduction}
+\begin{itemize}
+\item The goal is to jointly extract objects and estimate depths from stereo images
+\item Main contribution is to introduce the concept of 3D scene consistency in stereo matching
+\item Few works on 3D reasoning with respect to stereo images
+\item Object stereo: the goal was to improve depth estimation by object extraction.
+\item This work: main focus is on object extraction.
+\item Inspired by the work of [12]. Proposed the following 3-step pipeline for object extraction:
+\begin{enumerate}
+\item generate large pool of object proposals
+\item rank object proposals by learning objectness score
+\item perform object recognition on top ranked proposals
+\end{enumerate}
+\item This work differs in the case that it takes an stereo image as input and generates a pool of scene proposals which consist:
+\begin{enumerate}
+\item disparity map
+\item object map: each pixel $\longrightarrow$ an object
+\end{enumerate}
+\end{itemize}
 
-The position x(t) depends on the previous velocity and position at time t-1.
 
-We can define the state as
-\begin{equation*}
-	\mathbf{X_t} = \left(
-		\begin{array}{c}
-		x(t) \\
-		\dot{x}(t)
-		\end{array} \right)
-\end{equation*}
-
-\subsection*{b)}
-
-The state transition probability $p(x_{t} | u_{t}, x_{t-1})$ must be linear function in its arguments with added gaussian noise:
-\begin{equation*}
-	\mathbf{X_{t} = A_{t} X_{t-1} + B_{t} u_{t} + \epsilon_{t} } 
-\end{equation*}
-
-so,
-
-\begin{equation*}
-	\mathbf{X_t} = \left(
-		\begin{array}{c}
-		x(t) \\
-		\dot{x}(t)
-		\end{array} \right) = 
-		\overbrace{
-		\left(
-			\begin{array}{cc}
-			1 & 1 \\
-			0 & 1 
-			\end{array} \right)}^{\mathbf{A_t} }
-			\left( 
-			\begin{array}{c} 
-				x(t-1) \\
-				\dot{x}(t-1)
-			\end{array} \right)
-			+
-			\overbrace{
-			\left( 
-			\begin{array}{c} 
-				0.5 \\
-				1
-			\end{array} \right)}^{\mathbf{B_t} }
-			N(0,1)
-\end{equation*}
+%\subsection*{a)}
+%The equations for the moving car are\\
+%\\
+%$x(t) = x(t-1) + \dot{x}(t-1) \times \Delta{t} + \frac{1}{2} \ddot{x}(t-1) \Delta{t}^2$\\
+%$\Delta{t} = 1$\\
+%$x(t) = x(t-1) + \dot{x}(t-1) + \frac{1}{2} \ddot{x}(t-1)$\\
+%$\ddot{x} \sim N(0,1)$\\
+%$x(t) = x(t-1) + \dot{x}(t-1) + \frac{1}{2} N(0,1)$\\
+%$\dot{x}(t) = \dot{x}(t-1) + \ddot{x}(t-1) \Delta{t} = \dot{x}(t-1) + \ddot{x}(t-1)$\\
+%
+%The position x(t) depends on the previous velocity and position at time t-1.
+%
+%We can define the state as
+%\begin{equation*}
+%	\mathbf{X_t} = \left(
+%		\begin{array}{c}
+%		x(t) \\
+%		\dot{x}(t)
+%		\end{array} \right)
+%\end{equation*}
+%
+%\subsection*{b)}
+%
+%The state transition probability $p(x_{t} | u_{t}, x_{t-1})$ must be linear function in its arguments with added gaussian noise:
+%\begin{equation*}
+%	\mathbf{X_{t} = A_{t} X_{t-1} + B_{t} u_{t} + \epsilon_{t} } 
+%\end{equation*}
+%
+%so,
+%
+%\begin{equation*}
+%	\mathbf{X_t} = \left(
+%		\begin{array}{c}
+%		x(t) \\
+%		\dot{x}(t)
+%		\end{array} \right) = 
+%		\overbrace{
+%		\left(
+%			\begin{array}{cc}
+%			1 & 1 \\
+%			0 & 1 
+%			\end{array} \right)}^{\mathbf{A_t} }
+%			\left( 
+%			\begin{array}{c} 
+%				x(t-1) \\
+%				\dot{x}(t-1)
+%			\end{array} \right)
+%			+
+%			\overbrace{
+%			\left( 
+%			\begin{array}{c} 
+%				0.5 \\
+%				1
+%			\end{array} \right)}^{\mathbf{B_t} }
+%			N(0,1)
+%\end{equation*}
 \end{document}
