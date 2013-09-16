@@ -66,4 +66,22 @@ The individual terms are explained informally next:
 \end{itemize}
 
 \section{Optimization}
+Steps of the optimization procedure are described below:
+\begin{enumerate}
+\item Initial Disparity Map Computation: Optimizes $E_{pc}$ and returns $F'$ which is initial mapping of pixels to 3D pixels.
+\item Object Map Generation: depth segmentation on left view
+\begin{enumerate}
+\item first, divides the image into color segments using Mean Shift
+\item A disparity plane is fitted to each color segment using $F'$
+\item Group segments with similar disparity planes
+\end{enumerate}
+Varying the parameters of Mean Shift generates different object maps.
+\item Object Map Refinement: process each object map $O_i$ separately. Optimization is based on hypotheses testing. Starts with objects that have lowest BB volume.  They are aligned to on top of another BB that is spatially close. If it leads to lower energy, this move is accepted. A random shift of border shift is also done if it leads to lower energy.
+\item Object Map Fusion: The goal is to select objects from object maps $O_1,\ldots,O_n$. Selected objects form a new object map $O'$. Simulated annealing is used to find optimal selection of objects.
+\item Joint Object/Disparity Map Refinement: The goal is to find refined $O,F$. Joint optimization is done by assigning each pixel to a plane and object label. Patch Match based joint optimization is as follows:
+\begin{enumerate}
+\item Initialization: with assigning each pixel to to a random plane and random object ( values of $F',O'$). Labelling cost of each pixel is computed by evaluation of $pc, col, ol$.
+\item Propagation: plane and object label of a pixel are propagated to its neighbours. Accept this propagation if it leads to lower energy.
+\end{enumerate} 
+\end{enumerate}
 \end{document}
