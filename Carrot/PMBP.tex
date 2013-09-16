@@ -26,4 +26,10 @@ The key contributions are as follows:
 
 \subsection{Belief Propagation}
 Correspondence field is parametrized by a vector grid $\{\mathbf{u}_s\}_{s=1}^{n}$ where $s$ indexes nodes ( correspondence to image pixels) and  $\mathbf{u}_s \in \mathbb{R}^d$ parametrizes the correspondence vector at $s$.
+
+Problems with the data term for weighted patch flow are as follows:
+\begin{enumerate}
+\item it implicitly assumes a constant correspondence field in the $(2h+1)\times(2h+1)$ patch surrounding every pixel (?). Large $h$ over-smooths the output. More complex parametrization of flow field can be suggested. However, they are not computationally tractable.
+\item $h$ may be reduced. This causes the data term to be ambiguous. This causes the introduction of pairwise terms.
+\end{enumerate}
 \end{document}
