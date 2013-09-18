@@ -47,5 +47,22 @@ f(S) &:= \{f(s)|s \in S\} \\
 \end{align*}
 
 \subsection{PatchMatch with Particles}
+A set of $K$ particles $P_s \subset \mathbb{R}^d$ is associated to each node $s$. Each particle $p \in P_s$ is a candidate solution $\mathbf{u}_s^{*}$ for the minimization problem. These sets are initialized randomly (data driven initialization is also applicable).
 
+One PM iteration is linear sweep through all nodes. The order is defined by $\phi(s)$ so that $s$ is visited before $s'$ if $\phi(s) < \phi(s')$. Predecessor set $\Phi_s = {s'|\phi(s') < \phi(s)}$. Usually the order is from top-left to bottom-right and inverse on odd/even iterations.
+
+Two update steps are performed:
+\begin{enumerate}
+\item Propagation: $P_s$ is updated: 
+\begin{align*}
+C_s &= \bigcup \lbrace P_t | t \in N(s) \cap \Phi_s \rbrace,\\ 
+P_s &\leftarrow \text{fargmin}_K (P_s \cup C_s, \psi_s)
+\end{align*}
+%$$
+\item Resampling: perturbs particles locally by $\mathcal{N}(0,\sigma)$:
+\begin{align*}
+R_s &= \lbrace p + \mathcal{N}(0,\sigma) | p \in P_s \rbrace, \\
+P_s &\leftarrow \text{fargmin}_K (P_s \cup R_s, \psi_s)
+\end{align*}
+\end{enumerate}
 \end{document}
