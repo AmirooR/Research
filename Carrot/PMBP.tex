@@ -24,7 +24,7 @@ The key contributions are as follows:
 \item use of this analysis to define a new algorithm PMBP which is more accurate than PM and faster than BP. 
 \end{enumerate}
 
-\subsection{Belief Propagation}
+\subsection*{Belief Propagation (BP)}
 Correspondence field is parametrized by a vector grid $\{\mathbf{u}_s\}_{s=1}^{n}$ where $s$ indexes nodes ( correspondence to image pixels) and  $\mathbf{u}_s \in \mathbb{R}^d$ parametrizes the correspondence vector at $s$.
 
 Problems with the data term for weighted patch flow are as follows:
@@ -32,4 +32,20 @@ Problems with the data term for weighted patch flow are as follows:
 \item it implicitly assumes a constant correspondence field in the $(2h+1)\times(2h+1)$ patch surrounding every pixel (?). Large $h$ over-smooths the output. More complex parametrization of flow field can be suggested. However, they are not computationally tractable.
 \item $h$ may be reduced. This causes the data term to be ambiguous. This causes the introduction of pairwise terms.
 \end{enumerate}
+For discrete problems, where $\mathbf{u}$ live in finite set of size $D$, energy can be minimized in $O(nD)$ time, while with pairwise terms, the worst case complexity is $O(D^n)$. BP finds good minimizers in times far below the worst case. However, for correspondence problems, where $\mathbf{u}$ lives in an effective continuous space, $D$ must be very large. So, even minimizing unary only costs is too expensive.
+
+\subsection*{PatchMatch}
+An efficient way to compute a nearest neighbour field (NNF) between 2 images. It is considered as an efficient global minimizer for unary term only energies.
+
+In PatchMatch Stereo [3] disparity is over-parametrized by 3D vector $\mathbf{u}_s = [ a_s, b_s, c_s ]^T$, parametrizing planar disparity surface $\Delta_s(x,y)=a_s(x-x_s)+b_s(y-y_s)+c_s$. 
+
+A key deficiency of PM is that it lack an explicit smoothness control on output field (has deficiency in finding reliable correspondences in very large smooth regions).
+A related deficiency is tendency of PM to require a form of early stopping: global optimum of unary energy is not necessarily the best solution in terms of image error (?) $\rightarrow$ \textit{error versus energy trade-off}. 
+\begin{align*}
+f(S) &:= \{f(s)|s \in S\} \\
+\text{fargmin}_K(S,f) &:= S_K \subset S \, \text{s.t.} \, |S_K| = \min(K,|S|) \,\text{and}\, \max f(S_K) \leq \min f(S \backslash S_K)
+\end{align*}
+
+\subsection{PatchMatch with Particles}
+
 \end{document}
