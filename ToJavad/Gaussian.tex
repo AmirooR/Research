@@ -1,0 +1,39 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\end{center}
+
+\section*{Multivariate Gaussian}
+$p(\mathbf{x}) \sim \mathcal{N}(\mathbf{\mu},\mathbf{\Sigma})$:
+\begin{equation}
+p(\mathbf{x}) = \frac{1}{(2\pi)^{d/2}|\mathbf{\Sigma}|^{1/2}}\exp \left[-\frac{1}{2}(\mathbf{x}-\mathbf{\mu})^t \Sigma^{-1}(\mathbf{x}-\mathbf{\mu})\right],
+\end{equation}
+where $\mathbf{x} \in \mathbb{R}^d$.
+
+Now suppose $\mathbf{y}$ is a linear transformation of $\mathbf{x}$:
+\begin{equation}
+\mathbf{y} = \mathbf{A}^t\mathbf{x}
+\end{equation}
+where $\mathbf{A} \in \mathbb{R}^{d \times k}$ and $\mathbf{y} \in \mathbb{R}^k$. Then, 
+$p(\mathbf{y}) \sim \mathcal{N}(\mathbf{A}^t\mathbf{\mu}, \mathbf{A}^t \mathbf{\Sigma} \mathbf{A})$
+
+Now suppose $k=1$ and $\mathbf{A}$ is a unit vector $\mathbf{a}$. $y=\mathbf{a}^t\mathbf{y}$ represents the projection of $\mathbf{x}$ onto a line in the direction of $\mathbf{a}$.
+
+\subsection*{Example}
+If $\mathbf{x}=\lbrace x_1,x_2 \rbrace$, then the projection onto $x_1$ is represented by $\mathbf{a}^t=\left[1,0\right]$. 
+If $y = \mathbf{a}^t \mathbf{x}$, then $y \sim \mathcal{N}(\mu' = \mathbf{a}^t\mathbf{x}, \sigma' = \mathbf{a}^t \mathbf{\Sigma} \mathbf{a})$ and
+\begin{align*}
+\mu' &= \left[1,0\right]\left[\mu_1,\mu_2\right]^t = \mu_1 \\
+\sigma' &= \left[1,0\right] \left[\begin{array}{cc}
+\sigma_{1,1} & \sigma_{1,2} \\
+\sigma_{2,1} & \sigma_{2,2}
+\end{array}\right]
+\left[1,0\right]^t =\sigma_{1,1}
+\end{align*}
+\end{document}
