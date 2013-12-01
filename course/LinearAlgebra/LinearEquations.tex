@@ -1,0 +1,58 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{color}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Linear Equations}}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 07,08}
+\end{center}
+
+\section{Solutions to $Ax=b$}
+\begin{itemize}
+\item Rank $r$ is the number of pivots in elimination.
+\item Number of free variables equals to the number of columns without pivot.
+\item $R = [ I F;0 0 ]$, reduced echelon form.
+\item $N$ is null space matrix (columns are special sol'n): $RN=0 \Rightarrow N = [ -F; I ]$
+\item $Rx = 0 \Rightarrow [I F][x_{pivot}; x_{free}] = 0 \Rightarrow x_{pivot} = -Fx_{free}$
+\item $r \leq M, r \leq N$
+\item If $A$ is an $M \times N$ matrix, use the following rules to know about the solutions:
+\begin{enumerate}
+\item \blue{if $r = N < M$ (Full column rank matrix):}
+\begin{itemize}
+\item $N(A) = \{ \text{zero vector} \}$, because we have zero free variables.
+\item $x_{complete} = x_{particular}$ if a solution exists.
+\item $R = [ I; 0 ]$
+\item \red{zero or one solution}
+\end{itemize}
+\item \blue{if $r = M < N$ (Full row rank matrix):}
+\begin{itemize}
+\item $N-M$ free variables.
+\item $R=[IF]$
+\item has solution for every b!
+\item \red{infinite number of solutions}
+\end{itemize}
+\item \blue{if $r = M = N$:}
+\begin{itemize}
+\item $R = I$
+\item invertible
+\item \red{unique solution}
+\end{itemize}
+\item \blue{if $r < M, r < N$:}
+\begin{itemize}
+\item $R = [ I F; 0 0]$
+\item if solution exists: $x_{complete} = x_{particular} + x_{nullspace}$
+\item \red{zero or infinite solutions}
+\end{itemize}
+\end{enumerate}
+\end{itemize}
+
+\end{document}
