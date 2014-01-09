@@ -1,0 +1,129 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Orthogonal Vectors and Subspaces, Projecting into subspaces}}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 14-16}
+\end{center}
+
+\section{Orthogonality}
+\begin{itemize}
+	\item Columnspace $\perp$ nullspace of $A^T$
+	\item Orthogonal vectors: $x^T y = 0$
+	\item Subspace $\mathcal{S}$ is orthogonal to subspace $\mathcal{T}$ means: every vector in $\mathcal{S}$ is perpendicular to every vector in $\mathcal{T}$
+	\item Rowspace $\perp$ nullspace: \\
+		$Ax=0, 
+		\begin{bmatrix}
+			\rule[.5ex]{3.5em}{0.4pt} & row_1  & \rule[.5ex]{3.5em}{0.4pt} \\
+			\rule[.5ex]{3.5em}{0.4pt} & row_2  & \rule[.5ex]{3.5em}{0.4pt} \\
+				      &\vdots  & 		 \\
+			\rule[.5ex]{3.5em}{0.4pt} & row_m & \rule[.5ex]{3.5em}{0.4pt} \\
+		\end{bmatrix} x = 0$, so, $x$ is orthogonal to each row. Easy to  see row combinations is also orthogonal.
+	
+	\item Rowspace and nullspace are orthogonal complement: nullspace contains all vectors $\perp$ to row space.
+\end{itemize}
+
+\section{Projection}
+\begin{itemize}
+	\item Projection of a vector $b$ onto a line $a$:
+	\begin{itemize}
+		\item $p$ is the projection of $b$
+		\item $e$ is error, $e=b-p$, $p \parallel  a$
+		\item $\Rightarrow p = xa$
+		\item $a^T ( b - xa) = 0 => x a^T a = a^T b \Rightarrow x = \frac{a^T b}{a^T a}, p = a \frac{a^T b}{a^T a}$
+		\item Projection Matrix $= P b, P = \frac{a a^T}{a^T a}$
+		\item $C(P)$ : line through $a, rank(P) = 1$
+		\item \blue{Two properties of projection matrices:
+		\begin{enumerate}
+			\item $P^T = P$
+			\item $P^2 = P$
+		\end{enumerate}}
+	\end{itemize}
+	
+	\item Solve $Ax=b$ when there is no solution (e.g., $m > n$):
+		\begin{itemize}
+			\item $A^T A$ is $n \times n$ and symmetric,
+			\item $A^T A \hat{x} = A^T b$, $\hat{x}$ shows estimation
+			\item $N(A^T A ) = N(A)$
+			\item $rank(A^T A) = rank(A) \Rightarrow A^T A$ is invertible if $A$ has independent columns
+			\item solve $A\hat{x}=p$, $p$ is projection of $b$ onto columnspace
+			\item again $e = b - p$
+			\item $b- A\hat{x}$ is $\perp$ to columnspace $ \Rightarrow A^T ( b - A\hat{x}) = 0$, \\
+			 (imagine columns of $
+			A = \begin{bmatrix}
+			\mid & \mid  &		   &\mid \\
+			a_1   & a_2    & \ldots & a_n  \\
+			\mid & \mid  &		   &\mid
+			\end{bmatrix}$			
+			  are its bases $\Rightarrow$ each of its columns must be $\perp$ to $e$. So,  $a_1^T e = 0, \ldots a_n^T e = 0 \Longrightarrow A^T e = 0$)
+			  \item $e$ is in nullspace of $A^T \Longrightarrow e \perp  C(A)$, YES!
+			  
+			  \item So, $A^T A \hat{x} = A^T b \Longrightarrow \hat{x} = (A^T A)^{-1} A^T b$
+			  
+			  \item $p = A \hat{x} = A (A^T A)^{-1}A^T b, P = A (A^T A)^{-1} A^T$
+			  
+			  \item If $b$ is in columnspace: $Pb = b \Longleftarrow b$ has the form $Ax$, substitute by formulae of $P$
+			  
+			  \item If $b \perp$ columnspace: $Pb = 0 \Longleftarrow b$ is in nullspace of $A^T$, substitute by formulae of $P$
+			  
+			  \item $p+e = b, p = Pb \Rightarrow e = (I-P)b$,
+			  
+			  \item $I-P$: proj to perpendicular space
+		\end{itemize}
+		
+		\item Least Squares: e.g., 2D:
+		\begin{itemize}
+			\item $y = C + Dt$, and we have $(a_i, b_i)$ for $i$ in $\left[1-3\right]$.
+			\item Equations are: $C + D a_i = b_i \Longrightarrow Ax = b, 
+			\begin{bmatrix}
+			\vdots  && \vdots \\
+			1          & & a_i    \\
+			\vdots  && \vdots
+			\end{bmatrix} \begin{bmatrix}
+			C \\
+			D
+			\end{bmatrix} = \begin{bmatrix}
+			\vdots \\
+			b_i    \\
+			\vdots
+			\end{bmatrix}$ : no solution
+
+			\item Minimize: $\lVert Ax - b \rVert ^2 = \lVert e \rVert ^2 = \sum_i e_i^2$
+			
+			\item $p_i$ are points on the line: $p + e = b$ ( if $p$ was in the place of $b$, the equation could be solved. So, it is in the columnspace of $A$.
+			
+			\item to find $p$, $\hat{x} = 
+			\begin{bmatrix}
+				\hat{C} \\
+				\hat{D}
+			\end{bmatrix}$:\\
+			$A^T A \hat{x} = A^T b \rightarrow $ find $\hat{x} \rightarrow$  best line $\rightarrow p_i \rightarrow e_i$
+			
+			\item Note: $e$ is perpendicular to $p$ and columns of $A$
+		\end{itemize}
+		
+		\item If $A$ has independent columns, then $A^T A$ is invertible:
+		\begin{enumerate}
+			\item Suppose $A^T A x = 0 $, So, $x$ must be zero ( nullspace is only the zero vector)
+			\item IDEA: $x^T A^T A x = 0 \Rightarrow (Ax)^T (Ax) = 0 \Rightarrow Ax = 0 $\\
+			$\xRightarrow{\text{columns of}\, A\,\text{ are independent}}  x = 0$
+
+		\end{enumerate}
+\end{itemize}
+
+
+
+\end{document}
