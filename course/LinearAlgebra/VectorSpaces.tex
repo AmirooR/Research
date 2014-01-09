@@ -1,0 +1,43 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{color}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Vector Spaces}}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 06}
+\end{center}
+
+\section{Vector Spaces Requirements}
+Any linear combinations $c\vec{\mathbf{v}}+d\vec{\mathbf{w}}$ are in the space.
+
+\begin{itemize}
+	\item every subspace must go through origin.
+
+	\item 2 subspace: $P$ and $L$
+		\begin{itemize}
+			\item $P \cup U$ is not a subspace.
+
+			\item $P \cap U$ is a subspace. (proof by definition, i.e., linear combination)
+
+		\end{itemize}
+
+	\item \textbf{Columnspace}: all linear combinations of columns of $A_{m \times n}$.
+	
+	\item 	$Ax=b$ can be solved exactly when b is in the column space.
+	
+	\item \textbf{Nullspace}: all solutions x to $Ax=0$.
+	
+	\item  Nullspace is a subspace.
+
+\end{itemize}
+
+\end{document}
