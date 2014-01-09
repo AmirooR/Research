@@ -1,0 +1,86 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Basis, 4 Fundamental Subspaces}}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 09,10,11}
+\end{center}
+
+\section{Linear independence, Spanning a space, Basis, and Dimension}
+\begin{itemize}
+	\item independence is obvious!
+	\item Vectors $\{v_1, \ldots v_n\}$ span a space means: The space consists all combinations of those vectors.
+	\item \textbf{Basis}: Basis for a space is a sequence of vectors $\{v_1, \ldots, v_d\}$ that has two properties:
+		\begin{enumerate}
+			\item They are independent
+			\item They span a space
+		\end{enumerate}
+	\item Given a space, every basis for the space has the same number of vectors: This number is the dimension of the space. (proof, see Carlo Tomasi's note)
+	\item $Rank(A)= \# \text{pivot columns} = \text{dimension of the column space}$
+	\item $dim(C(A)) = r, dim(N(A)) = \# \text{free variables} = n - r$
+\end{itemize}
+
+\section{The 4 fundamental subspaces}
+\begin{itemize}
+	\item 4 subspaces:
+	\begin{itemize}
+		\item $A \text{is a} m \times n$ Matrix
+		\item $C(A),N(A), N(A^T) \text{ or left } N(A), R(A) = C(A^T)$
+	\end{itemize}
+	\item $\mathbf{\mathbb{R}}^n: R(A) \perp N(A)$ 
+	\item $\mathbf{\mathbb{R}}^m: C(A) \perp N(A^T)$
+	\item $C(rref(A)) \neq C(A)$
+	\item $R(rref(A)) = R(A)$, row operations $\Longrightarrow dim(R(A)) = r$
+	\item $y^T A = \mathbf{0}^T $, $y$ is in left nullspace of $A$,\\
+	\\
+		$rref(\begin{bmatrix}
+		A_{m \times n} & & \mathcal{I} 
+		\end{bmatrix}) \longrightarrow    
+		\begin{bmatrix}
+R_{m \times n} & & E_{m \times m}
+		\end{bmatrix}		
+ := E
+ \begin{bmatrix}
+ A& & I
+ \end{bmatrix}
+  = \begin{bmatrix}
+   R& & E
+   \end{bmatrix}$ \\
+   $ \Longrightarrow EA = R$, \\
+   \\
+		 if $A$ was square and invertible: $R = I \Rightarrow E = A^{-1}$, rows of $E$ corresponding to zero rows of $R$ are basis for $N(A.T)$, because they are row vectors producing zero when multiplied by $A$.
+		 
+		 \item New vector spaces: $M = $ all $m\,by\,m$ matrices.
+		 \item Subspaces of $M$: 
+		 \begin{itemize}
+		 	\item All upper triangular matrices ($U$)
+		 	\item All symmetric matrices ($S$)
+		 	\item Diagonal matrices: $D = S \cap U$: dim(D) = m
+		 	\item $S+U$:any element in $S +$ any element in $U$: all $m\,by\,m$ matrices: dim=$m^2$
+			\item $dim(S)+dim(U) - dim(S \cap U) = dim(S \cup U)$		 	
+		 \end{itemize}
+\end{itemize}
+%\begin{center}
+\begin{tabularx}{\linewidth}[t]{|c|c|c|X|X|}
+		\hline
+		& $C(A)$ & $N(A)$ & $R(A)$ & $N(A^T)$ \\
+		\hline
+		Basis: & Pivot Cols & Special Sol'n & First $r$ rows of $R:=rref(A)$ & rows of $E$ corresponding to zero rows of $R$\\
+		\hline
+		DIM: & $r$ & $n-r$ & $r$ & $m-r$ \\
+		\hline
+		\end{tabularx}		
+%\end{center}
+\end{document}
