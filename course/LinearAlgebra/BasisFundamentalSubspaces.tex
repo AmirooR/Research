@@ -21,7 +21,7 @@ The Merciful, The Compassionate.
 \section{Linear independence, Spanning a space, Basis, and Dimension}
 \begin{itemize}
 	\item independence is obvious!
-	\item Vectors $\{v_1, \ldots v_n\}$ span a space means: The space consists all combinations of those vectors.
+	\item Vectors $\{v_1, \ldots, v_n\}$ span a space means: The space consists all combinations of those vectors.
 	\item \textbf{Basis}: Basis for a space is a sequence of vectors $\{v_1, \ldots, v_d\}$ that has two properties:
 		\begin{enumerate}
 			\item They are independent
@@ -46,7 +46,7 @@ The Merciful, The Compassionate.
 	\item $y^T A = \mathbf{0}^T $, $y$ is in left nullspace of $A$,\\
 	\\
 		$rref(\begin{bmatrix}
-		A_{m \times n} & & \mathcal{I} 
+		A_{m \times n} & & I 
 		\end{bmatrix}) \longrightarrow    
 		\begin{bmatrix}
 R_{m \times n} & & E_{m \times m}
@@ -60,7 +60,7 @@ R_{m \times n} & & E_{m \times m}
    \end{bmatrix}$ \\
    $ \Longrightarrow EA = R$, \\
    \\
-		 if $A$ was square and invertible: $R = I \Rightarrow E = A^{-1}$, rows of $E$ corresponding to zero rows of $R$ are basis for $N(A.T)$, because they are row vectors producing zero when multiplied by $A$.
+		 if $A$ was square and invertible: $R = I \Rightarrow E = A^{-1}$, rows of $E$ corresponding to zero rows of $R$ are basis for $N(A^T)$, because they are row vectors producing zero when multiplied by $A$.
 		 
 		 \item New vector spaces: $M = $ all $m\,by\,m$ matrices.
 		 \item Subspaces of $M$: 
@@ -68,14 +68,14 @@ R_{m \times n} & & E_{m \times m}
 		 	\item All upper triangular matrices ($U$)
 		 	\item All symmetric matrices ($S$)
 		 	\item Diagonal matrices: $D = S \cap U$: dim(D) = m
-		 	\item $S+U$:any element in $S +$ any element in $U$: all $m\,by\,m$ matrices: dim=$m^2$
+		 	\item $S+U$:any element in $S\,+$ any element in $U$: all $m\,by\,m$ matrices: dim=$m^2$
 			\item $dim(S)+dim(U) - dim(S \cap U) = dim(S \cup U)$		 	
 		 \end{itemize}
 		 
 		 \item Rank one matrices can be written as $A = \vec{u}.\vec{v}^T$
 \end{itemize}
 %\begin{center}
-\begin{tabularx}{\linewidth}[t]{|c|c|c|X|X|}
+\begin{tabularx}{\linewidth}[t]{|l|l|l|X|X|}
 		\hline
 		& $C(A)$ & $N(A)$ & $R(A)$ & $N(A^T)$ \\
 		\hline
