@@ -1,0 +1,85 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Orthogonal Matrices and Gram Schmidt}}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 17}
+\end{center}
+
+\section{Orthonormality}
+\begin{itemize}
+\item \textbf{Orthonormal basis}: \\
+bases $\{q_1, q_2,\ldots,q_n\}$ are orthonormal vectors:\\
+
+\begin{equation*}
+\left\{\begin{array}{rl}
+q_i^T.q_j = 0 & \text{if} i \neq j \\
+q_i^T.q_j = 1 & \text{if} i = j
+\end{array}
+\right.
+\end{equation*}
+
+\item \textbf{Orthonormal matrices}: columns are orthonormal 
+$Q = 
+\begin{bmatrix}
+\mid & \mid &        & \mid \\
+q_1  & q_2  & \ldots & q_n \\
+\mid & \mid &        & \mid
+\end{bmatrix}
+$:
+\begin{itemize}
+\item $Q^T.Q = I$
+\item if $Q$ is squared, $Q^T = Q^{-1}$
+\item Suppose $Q$ has orthonormal columns, project onto its columns:
+\begin{itemize}
+\item $P = Q(Q^T Q)^{-1} Q^T = Q Q^T \rightarrow$ folows the properties. $P = I$ if $Q$ is squared
+
+\item $A^T A \hat{x} = A^T b \Rightarrow Q^T Q\hat{x} = Q^T b \rightarrow \hat{x_i} = q_i^Tb$ 
+\end{itemize}
+\end{itemize}
+
+\end{itemize}
+
+\section{Gram Schmidt}
+\begin{itemize}
+\item start with independent vectors $\{a,b,\ldots \}$, find orthogonal vectors $\{A,B,\ldots \}$
+and orthonormal ones: $\{q_1 = \frac{A}{\lVert A\rVert},\ldots \}$\\
+
+\item $A = a$, $B$ must be orthogonal to $a$. $B=e$ (in projection). $\Longrightarrow B = b-p=b-A^TbA/(A^T A)$
+
+\item $C = A^T c A / (A^T A) - B^T c B/(B^TB), \ldots$
+
+\item $A = Q R: 
+\begin{bmatrix}
+\mid & \mid &        & \mid \\
+a_1  & a_2  & \ldots & a_n \\
+\mid & \mid &        & \mid
+\end{bmatrix} = 
+\begin{bmatrix}
+\mid & \mid &        & \mid \\
+q_1  & q_2  & \ldots & q_n \\
+\mid & \mid &        & \mid
+\end{bmatrix}
+\begin{bmatrix}
+a_1^Tq_1  & \ldots \\
+a_1^Tq_2  & \ldots \\
+\vdots    & \vdots
+\end{bmatrix}$
+
+$a_1^T q_2$ is $0$, $R$ is upper triangular. because later $q$'s are set to be perpendicular to the earlier ones! ( Look Book)
+\end{itemize}
+
+\end{document}
