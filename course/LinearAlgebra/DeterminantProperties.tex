@@ -1,0 +1,52 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Properties of Determinants}}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 18}
+\end{center}
+
+\section{Properties of determinants}
+\begin{enumerate}
+\item $det(I)=1$
+
+\item Exchange rows: reverse the sign of $det$. So, $det$ of permutation matrices are $1$ or $-1$.
+
+\item 
+\begin{itemize}
+\item[a)] $det( \text{multiply a row of }A\text{ by }t) = t det(A).$
+\item[b)] $ det(A \text{ with its } row_i + \vec{r}) = det(A) + det( A \text{ with } row_i \text{ replaced by } \vec{r})$\\
+\red{$\Longrightarrow det $ is linear for each row.}
+\end{itemize}
+\item Two equal rows $\rightarrow det = 0$, proof by exchanging rows
+\item Subtract $l * row_i$ from $row_k$: $det$ doesn't change
+\item Row of zeros: $det = 0$, proof by multiplying zero row by a scalar $t$
+\item $det(U)$ (upper triangular) $= \prod_i U_{(i,i)} := ( \pm )$ product of pivots.
+\begin{itemize}
+\item proof: kill off diagonal with row operations (suppose $d_i \neq 0$ : if it is zero we will get a zero row and $det = 0$)\\
+The result is a diagonal matrix: the product of the elements is the $det$. by property \blue{3.a}.
+\end{itemize}
+\item $det(A)$ is zero exactly when $A$ is singular.
+\item $det(AB) = det(A)det(B)$\\
+$\Rightarrow det(A^{-1}) = 1/det(A)$ \\
+$\Rightarrow det(A^2) = det(A)^2$ \\
+$\Rightarrow det(2A) = 2^n det(A)$
+
+\item $det(A^T) = det(A)$ \\ 
+proof: $|A| = |LU| \Rightarrow |A^T| = |U^T L^T| = |U^T||L^T|$	
+\end{enumerate}
+
+\end{document}
