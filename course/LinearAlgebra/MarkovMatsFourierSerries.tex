@@ -7,6 +7,7 @@
 \usepackage{tabularx}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\ud}{\,\mathrm{d}}
 \theoremstyle{definition} \newtheorem{Theorem}{Theorem}
 \begin{document}
 
@@ -21,12 +22,53 @@ The Merciful, The Compassionate.
 \tiny{notes on Gilbert Strang videos, Lecture 24}
 \end{center}
 
-\section{Markov Matrices}
+\section{Markov matrices}
 \begin{enumerate}
 \item all entries $\geq 0$
 \item all columns add to $1$
 \end{enumerate}
 \begin{itemize}
-	\item steady state: $\rightarrow \lambda = 1$
+	\item Steady state: $\rightarrow \lambda = 1$
+
+	\item Two facts:
+	\begin{enumerate}
+		\item $\lambda = 1$ is an eigenvalue, $x_1 \geq 0$
+		\begin{itemize}
+			\item $A - 1I = $ matrix with all columns add to $0$. So, it is singular and
+$1$ is an eigenvalue for $A$
+
+			\item Also note that $\mathbf{1}^T\text{ is in }n((A-I)^T)$.
+			
+			\item $x_1$ is in $n(A-I)$
+		\end{itemize}
+		\item All other $|\lambda_i| < 1 $
+	\end{enumerate}
+	\item $\Rightarrow u_k = A^k u_0 = c_1 {\lambda_1}^k x_1 + c_2 {\lambda_2}^k x_2 + \ldots \qquad \rightarrow \qquad  c_1 x_1  \text{ as } k \rightarrow \infty$
+
+	\item $x_1$ part of $u_0$ is the steady state.
+\end{itemize}
+
+\section{Projection with orthonormal basis $\{q_1, \ldots, q_n\}$}
+\begin{itemize}
+	\item Any $v = x_1 q_1 + x_2 q_2 + \ldots + x_n q_n $
+	\item ${q_1}^T v = x_1, \ldots$
+	\item $\begin{bmatrix}
+		\mid & & \mid \\
+		q_1&\ldots&q_n\\
+		\mid & & \mid 
+	   \end{bmatrix} \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix} = v$
+	   
+	\item $ Qx=v \Rightarrow x = Q^{-1}v =  Q^T v $
+\end{itemize}
+
+\section{Fourier series}
+\begin{itemize}
+	\item $f(x) = a_0 + a_1 cos(x) + b_1 sin(x) + a_2 cos(2x) + b_2 sin(2x) + \ldots $
+	\item infinite, orthogonal bases \red{(working in function space)}.
+	\item bases are $1, cos(x), sin(x) , cos(2x), sin(2x), \ldots $
+	\item inner product of functions: $f^T g = \int f(x) g(x)\ud x =  \int_0^{2\pi} f(x)g(x) \ud x \rightarrow$ orthonormal infinite bases
+	\item $a_1 = $?
+	\item $\int_0^{2\pi} f(x)cos(x)dx = a_1 \int_0^{2\pi} (cos(x))^2\ud x $
+	\item $\Rightarrow a_1 = \frac{1}{\pi} \int_0^{2\pi} f(x)cos(x)\ud x $
 \end{itemize}
 \end{document}
