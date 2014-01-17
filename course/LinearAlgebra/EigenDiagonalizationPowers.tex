@@ -1,11 +1,13 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{color}
 \usepackage{mathtools}
 \usepackage{tabularx}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
+\theoremstyle{definition} \newtheorem{Theorem}{Theorem}
 \begin{document}
 
 \begin{center}
@@ -47,9 +49,64 @@ degree 2 equation for eigenvalues.
 A double or higher order degeneracy will cause a lost in one(or more) equations. We have infinite number of ways to
 choose eigenvectors. The most traditional way (almost in $2^{nd}$ order degeneracy) is to choose the first one to be the
 trivial normalized one. and the other vector to be orthogonal to the first one.
-
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
 
+\section{Diagonalization and Powers of $A$}
+\begin{itemize}
+	\item \textbf{Diagonalizing a matrix,  $S^{-1} A S = \Lambda$}:
+		\begin{itemize}
+			\item Suppose we have $n$ linearly independent eigenvectors of $A$. 
+			\item Put them in columns of $S$:\\
+			\begin{align*}
+				AS &= A \begin{bmatrix}
+				\mid & \mid & & \mid \\ 
+				x_1 & x_2 & \ldots & x_n \\
+				\mid & \mid & & \mid 
+				\end{bmatrix} \nonumber \\
+			&=\begin{bmatrix}\mid & \mid & & \mid \\
+					\lambda_1 x_1 & \lambda_2 x_2 & \ldots & \lambda_n x_n \\
+					\mid & \mid & & \mid \end{bmatrix} \nonumber \\
+			&= \begin{bmatrix}\mid & \mid & & \mid \\
+				x_1 & x_2 & \ldots & x_n \\
+				       \mid & \mid & & \mid \end{bmatrix}
+			  \begin{bmatrix} \lambda_1 & \ldots & 0 \\
+					  	    & \ddots &   \\
+						  	0   & \ldots & \lambda_n \end{bmatrix} \nonumber \\
+						  	&= S \Lambda \nonumber \\ 	
+						  	&\Rightarrow AS = S\Lambda
+			\end{align*}
+			
+			\item $ A = S \Lambda S^{-1} \Rightarrow A^k = S \Lambda^{k} S^{-1}$
+			
+			\begin{Theorem}
+			 $A^k \rightarrow 0 \text{ as } k \rightarrow \infty \text{ if all } |\lambda_i| < 1.$ 
+			\end{Theorem}
+			
+			\item $A$ is sure to be diagonalizable if all the $\lambda_i$'s are different.
+			
+			\item  If we have repeated eigenvalues: may or may not have independent eigenvectors (consider $I$).
+			
+			\item Symmetric matrices: eigenvalues are real, eigenvectorss are orthogonal to each other
+
+			\item $e^{At}$:
+			\begin{align*}
+				e^{At} &= I + At + \frac{{At}^2}{2} + \ldots + \frac{{At}^n}{n!} + \ldots \\
+						&= SS^{-1} + S \Lambda S^{-1} t + S \Lambda^2 S^{-1} t/2+ \ldots \\
+						&= S e^{\Lambda t} S^{-1}
+			\end{align*}
+			
+			\item $e^{\Lambda t} = \begin{bmatrix}e^{\lambda_1 t} & \ldots & 0 \\
+				& \ddots & \\
+				0 & \ldots & e^{\lambda_n t}
+			   \end{bmatrix}$
+
+			\item \red{Note: assumed $A$ is diagonalizable.}
+			
+			\item eigenvalues of $A$ and $A^T$ are the same. $det(A-\lambda I) = det(A^T - \lambda I)$
+
+
+		\end{itemize}
+\end{itemize}
 \end{document}
