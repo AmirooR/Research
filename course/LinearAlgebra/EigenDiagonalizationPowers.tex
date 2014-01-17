@@ -1,0 +1,55 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Eigenvalues, Eigenvectors, Diagonalization, and Powers of $A$}}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 21,22}
+\end{center}
+
+\section{Eigenvalues and eigenvectors}
+\begin{itemize}
+	\item $Ax = \lambda x$, eigenvectors parallel to $x$
+	\begin{itemize}
+		\item  If $A$ is singular, then $\lambda = 0$ is an eigenvalue.
+		\item What are the $x$'s, and $\lambda$'s of projection matrix $P$? $\longrightarrow \lambda = 0,1$
+		\begin{itemize}
+			\item Any $x$ in the projection plane : $Px = x$, $\lambda = 1$
+			\item Any $x \perp$ to the plane: $Px = 0$, $\lambda = 0$ 
+		\end{itemize}
+		\item How about permutation matrix? 
+		\begin{itemize}
+			\item $A = \begin{bmatrix}0 & 1 \\ 1 & 0  \end{bmatrix}$
+			\item swap rows!
+			\item $x = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$, $\lambda = 1$, $Ax=x$
+			\item $x = \begin{bmatrix} -1 \\ 1 \end{bmatrix}$, $\lambda = -1$, $Ax=-x$
+		\end{itemize}
+		\item FACT: sum of $\lambda$'s $ = a_{11} + a_{22} + \ldots + a_{nn}$
+		\item Solve $Ax = \lambda x$: $(A-\lambda I)x= 0$
+		\begin{itemize}
+			\item $\Rightarrow det(A-\lambda I) = 0$. Find $\lambda$'s first.
+			\item For $2\times 2$ matrices $trace$ is the linear coefficient, and $det$ is constant of 
+degree 2 equation for eigenvalues.
+
+			\item For degenerate equations (e.g., when $A$ is upper triangular), the eigenvalues, and eigenvectors are repeated.
+A double or higher order degeneracy will cause a lost in one(or more) equations. We have infinite number of ways to
+choose eigenvectors. The most traditional way (almost in $2^{nd}$ order degeneracy) is to choose the first one to be the
+trivial normalized one. and the other vector to be orthogonal to the first one.
+
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\end{document}
