@@ -1,0 +1,66 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\ud}{\,\mathrm{d}}
+\theoremstyle{definition} \newtheorem{Theorem}{Theorem}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Symmetric Matrices, Positive Definiteness}}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 25}
+\end{center}
+
+\section{Symmetric Matrices: $A=A^T$}
+\begin{enumerate}
+\item The eigenvalues are real:\\
+	\begin{align*}
+		Ax=\lambda x & \Rightarrow \bar{A}\bar{x} = \bar{\lambda}\bar{x} = A\bar{x} = \bar{\lambda}\bar{x} \\
+			     & \Rightarrow \bar{x}^T A^T = \bar{x}^T \bar{\lambda} = \bar{x}^T A \\
+			     & \Rightarrow \bar{x}^T A x = \bar{\lambda} \bar{x}^T x \\
+	 Ax=\lambda x & \Rightarrow \bar{x}^T A x = \lambda \bar{x}^T x \\
+	& \Rightarrow \lambda \bar{x}^T x = \bar{\lambda} \bar{x}^T x \\
+	& \Rightarrow \lambda = \bar{\lambda} \Rightarrow \lambda \text{ is real}
+		\end{align*}
+		\begin{itemize}
+			\item Note that $\bar{x}^T x$ is $\geq 0$.
+			\item If $A$ is complex: the proof is still working if $\bar{A}^T = A$
+			\item Good matrices are conjugate transpose.
+		\end{itemize}
+\item The eigenvectors are (can be chosen) orthogonal:
+\begin{itemize}
+\item $A=S\Lambda S^{-1} \rightarrow Q\Lambda Q^T$ Assuming orthonormal eigenvectors \\
+\begin{align*}
+	   A = Q \Lambda Q^T &= \begin{bmatrix}
+					\mid &       & \mid \\
+					q_1 & \ldots & q_n \\
+					\mid &       & \mid 
+				\end{bmatrix}
+				\begin{bmatrix}
+					\lambda_1 &        & 0      \\
+					\vdots    & \ddots & \vdots \\
+					0         &        & \lambda_n 
+				\end{bmatrix}
+				\begin{bmatrix}
+					{q_1}^T       \\
+					\vdots \\
+					{q_n}^T 
+				\end{bmatrix} \\
+	&= \lambda_1 q_1 {q_1}^T + \lambda_2 q_2 {q_2}^T + \ldots
+	\end{align*}
+	
+	\item 
+\end{itemize}
+\end{enumerate}
+\end{document}
