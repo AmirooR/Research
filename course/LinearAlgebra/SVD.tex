@@ -1,0 +1,72 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\ud}{\,\mathrm{d}}
+\theoremstyle{definition} \newtheorem{Theorem}{Theorem}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Singular Value Decomposition (SVD) }}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 29}
+\end{center}
+
+\section{Singular Value Decomposition}
+\begin{itemize}
+\item $A = U \Sigma V^T$
+\item $U, V$ are orthogonal matrices, $\Sigma$ is diagonal.
+\item $A$ can be any matrix.
+$v_1$ is a vector in rowspace. $u_1$ is a vector in columnspace. $u_1 = A v_1$. In SVD we need an orthogonal
+basis in rowspace get transformed to the orthogonal basis in columnspace. $\rightarrow u_2 = A v_2, u_1 \perp u_2, 
+v_1 \perp v_2, \ldots$. In order to have normalized bases we must have: $\sigma_1 u_1 = A v_1, \ldots $:
+\end{itemize}
+\begin{align*}
+A \begin{bmatrix}
+			\mid & \mid &        & \mid &   \mid   &	      & \mid \\
+			v_1  &  v_2 & \ldots & v_r  & v_{r+1} & \ldots & v_n  \\
+			\mid & \mid &        & \mid &   \mid   &		& \mid
+		  \end{bmatrix} 
+		  &= 
+		  \begin{bmatrix}
+			\mid & \mid &        & \mid &   	  &		& \mid \\
+			u_1  &  u_2 & \ldots & u_r  & u_{r+1} & \ldots  & u_m	 \\
+			\mid & \mid &        & \mid &   	  &		& \mid 
+		  \end{bmatrix}
+		  \begin{bmatrix}
+			\sigma_1 & \ldots &  		&   & 0 \\
+				   & \ddots &  		&   &   \\
+			 	   & \ldots & \sigma_r  	&   &   \\
+			 	   & 		&  		& 0 &   \\
+			0	   & 		&  		&   & \ddots   
+		  \end{bmatrix} \\
+			A V   &= U \Sigma  \\
+			A     &= U \Sigma V^T \\
+			A^T A &= V \Sigma^T U^T U \Sigma V^T \\
+				&= V  \begin{bmatrix}
+					\sigma_1^2  & \ldots 	 & 		& 0 	   \\
+					0		& \sigma_2^2 & \ldots   & \vdots \\
+					\vdots	& 		 & \ddots  	&        \\
+					0		& \ldots	 & 		&
+					\end{bmatrix}
+		\end{align*}
+\begin{itemize}
+\item $A^T A = V \Sigma^2 V^T$, so, $V$'s are eigenvectors of $A^T A$ and $\sigma^2$'s are eigenvalues
+of that matrix.
+\item  Similarly, $U$'s are eigenvectors of $A A^T$.
+\item $v_1, \ldots, v_r$ are orthonormal basis for rowspace
+\item $u_1, \ldots, u_r$ are orthonormal basis for columnspace
+\item $v_{r+1},\ldots, v_n$ are orthonormal basis for nullspace
+\item $u_{r+1},\ldots, u_n$ are orthonormal basis for $N(A^T)$
+\end{itemize}
+\end{document}
