@@ -1,0 +1,38 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\ud}{\,\mathrm{d}}
+\theoremstyle{definition} \newtheorem{Theorem}{Theorem}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Positive Definite Matrices, Minima, Ellipsoids, and Similar Matrices }}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 27,28}
+\end{center}
+
+\section{Positive Definite Matrices}
+\begin{itemize}
+\item Positive Definiteness Test: $ A = \begin{bmatrix}
+						a & b
+						b & c
+					 \end{bmatrix}$
+\begin{enumerate}
+\item Eigen values must be greater than zero $\lambda_1 > 0, \lambda_2 > 0$
+\item Sub-determinants should be greater than zero: $a > 0, ac - b^2 > 0$
+\item Pivots should be greater than zero: $a>0, \frac{ac-b^2}{a} > 0 $
+\item Definition: $x^T A x > 0$ at all points except at $x=0$
+\end{enumerate}
+\end{itemize}
+\end{document}
