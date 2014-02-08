@@ -1,0 +1,89 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\ud}{\,\mathrm{d}}
+\theoremstyle{definition} \newtheorem{Theorem}{Theorem}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Complex Matrices, Fast Fourier Transform (FFT) }}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 26}
+\end{center}
+
+\section{Complex Matrices}
+\begin{itemize}
+\item $z \in \mathbb{C}^n$, squared length of $z$ is $\bar{z}^T z = z^H z$ (Hermitian).
+\item Inner product: $\bar{y}^T x = y^H x$
+\item \blue{Symmetric} changes to \red{Hermitian} matrices: $\bar{A}^T = A$
+\item \blue{Orthogonal} changes to \red{Unitary} Matrices: $I = Q^H Q$
+\end{itemize}
+
+\section{Fourier Matrices}
+\begin{align*}
+F_n &= \begin{bmatrix}
+		1 	 & 1   	& 1   	& \ldots & 1 		\\
+		1 	 & W   	& W^2 	& \ldots & w^{n-1}	\\
+		1 	 & W^2 	& W^4 	& \ldots & W^{2(n-1)}	\\
+		\vdots & \vdots	& \vdots	& \ldots & \vdots		\\
+		1	 & W^{n-1}	& W^{2(n-1)}& \ldots & w^{(n-1)^2} 
+\end{bmatrix} \\
+(F_n)_{i,j} &= W^{ij}, i,j = 0,\ldots , n-1 \\
+ W^n &= 1 \Rightarrow W = e^{i2\pi/n} = \cos(\frac{2\pi}{n}) + i\sin(\frac{2\pi}{n})
+\end{align*}
+
+\begin{itemize}
+\item Columns are orthogonal 
+\item $n$ point Fourier transform. The inverse matrix is the inverse Fourier transform for n-D vectors.
+\item $F_n \rightarrow \frac{1}{\sqrt{n}}F_n$ has orthonormal columns.
+\item ${F_n}^H F_n = I$
+\end{itemize}
+
+\section{Fast Fourier Transform}
+\begin{itemize}
+\item ${W_{64}} ^ 2 = W_{32}$
+\begin{align*}
+\begin{bmatrix}
+F_{64}
+\end{bmatrix}&=
+\begin{bmatrix}
+I & D \\
+I & -D
+\end{bmatrix}
+\begin{bmatrix}
+F_{32} & 0    \\
+0    & F_{32}
+\end{bmatrix}
+\begin{bmatrix}
+1 &   &   &   &        &         \\
+  &   & 1 &   &        &         \\
+  &   &   &   & \ddots &         \\
+  & 1 &   &   &        &         \\
+  &   &   & 1 &        &         \\
+  &   &   &   &  \ddots      &   \\
+  &   &   &   &        & 1       
+\end{bmatrix} \\
+D &=  \begin{bmatrix}
+	1 &   &     &        & 		\\
+	  & W &     &        & 		\\
+	  &   & W^2 &        & 		\\
+	  &   &     & \ddots &        \\
+	  &   &     &        & W^{31}	\\
+	\end{bmatrix}
+\end{align*}
+
+\item Complexity: $64^2 = 2(32)^2 + 32 \rightarrow \frac{n}{2} \log_2 n$
+
+\end{itemize}
+\end{document}
