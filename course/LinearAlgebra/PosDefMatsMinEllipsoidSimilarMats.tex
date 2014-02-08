@@ -25,7 +25,7 @@ The Merciful, The Compassionate.
 \section{Positive Definite Matrices}
 \begin{itemize}
 \item Positive Definiteness Test: $ A = \begin{bmatrix}
-						a & b
+						a & b \\
 						b & c
 					 \end{bmatrix}$
 \begin{enumerate}
@@ -33,6 +33,60 @@ The Merciful, The Compassionate.
 \item Sub-determinants should be greater than zero: $a > 0, ac - b^2 > 0$
 \item Pivots should be greater than zero: $a>0, \frac{ac-b^2}{a} > 0 $
 \item Definition: $x^T A x > 0$ at all points except at $x=0$
+\end{enumerate}
+\item Semi-definite: all $>$ becomes $\geq$.
+\item $x^T A x = ax^2 + 2bxy + cy^2, x = \begin{bmatrix}x \\ y\end{bmatrix}$
+\item Cutting this equation at level one: gives an ellipse
+\item MIN: 
+\begin{itemize}
+\item  Calculus: $\frac{\ud^2 u}{\ud x^2} > 0$ and $\frac{\ud u}{\ud x} = 0$
+\item Linear Algebra: min of $f(x_1, x_2,\ldots,x_n)$: Matrix of second derivatives 
+should be positive definite.
+\end{itemize}
+\item Matrix of second derivatives: $\begin{bmatrix} f_{xx} & f_{xy} \\ f_{yx} & f_{yy}\end{bmatrix}$
+\item In higher dimensions, (e.g dim=3) : cutting at level one gives an ellipsoid.
+\item $A = Q \Lambda Q^T$. So, the ellipoid has $n$ principal axes parallel to eigenvectors, and their scales
+ are given by eigenvalues.
+\item Some notes about positive definite (PD) matrices: 
+\begin{itemize}
+\item if $A$ is PD: $A^{-1}$ is also PD. (eigenvalues are positive)
+\item if $A$ and $B$ are PD matrices: $A+B$ is also PD. ($x^T A x > 0\text{ and } x^T B x > 0$)
+\item if $A$ is a m-by-n matrice: $A^T A$ is symmetric, square, and positive semi-definite! 
+\begin{equation*}
+x^T A^T A x = \lVert Ax \rVert^2 \geq 0
+\end{equation*}
+
+\item if $A$ has rank $n$ ( $n$ independent columns, or $N(A)=\{\}$ ), $A^T A$ becomes PD.
+\end{itemize}
+\end{itemize}
+
+\section{Similar Matrices}
+\begin{itemize}
+\item Two n-by-n matrices $A$ and $B$ are \textbf{similar} means: for some invertible matrice $M$,
+ $B = M^{-1} A M$.
+\item Similar matrices have the same $\lambda$'s!!
+		\begin{align*}
+		Ax &= \lambda x \\
+		AMM^{-1}x &= \lambda x \\
+		M^{-1}AM M^{-1} x &= \lambda M^{-1} x \\
+		B M^{-1}x &= \lambda M^{-1}x
+		\end{align*}
+
+\item Eigenvecotrs of $B$ is $M^{-1}(\text{eigenvectors of } A)$
+\item \red{BAD CASE Example: $\lambda_1 = \lambda_2 = 4$}:
+\begin{enumerate}
+\item one small family: $\begin{bmatrix}4 & 0 \\ 0 & 4\end{bmatrix}$
+
+			\begin{equation*}
+			M^{-1}\begin{bmatrix}4 & 0 \\ 0 & 4\end{bmatrix}M = \begin{bmatrix}4 & 0 \\ 0 & 4\end{bmatrix}
+			\end{equation*}
+
+			It is only similar to itself!
+\item big family includes $\begin{bmatrix}4 & 1 \\ 0 & 4\end{bmatrix} \leftarrow \text{ Jordan From}$
+
+\item More members of family:$\begin{bmatrix}4 & 1 \\ 0 & 4\end{bmatrix}, \begin{bmatrix}5 & 1 \\ -1 & 3\end{bmatrix},
+\begin{bmatrix}4 & 0 \\ 17 & 4\end{bmatrix} $
+
 \end{enumerate}
 \end{itemize}
 \end{document}
