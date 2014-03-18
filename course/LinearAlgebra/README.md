@@ -1,0 +1,15 @@
+Linear algebra lecture summaries (by Gilbert Strang)
+====================================================
+
+* Lecture 06: Vector spaces ![VectorSpaces.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/VectorSpaces.pdf)
+* Lecture 07,08: Linear equations ![LinearEquations.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/linearEquations.pdf)
+* Lecture 09,10,11: Basis and four fundamental subspaces ![BasisFundamentalSubspaces.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/BasisFundamentalSubspaces.pdf)
+* Lecture 14,15,16: Orthogonal vectors and subspaces, projection onto subspaces  ![OrthogonalSpacesProjection.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/OrthogonalSpacesProjection.pdf)
+* Lecture 17: Orthogonal Matrices and Gram Schmidt ![OrthogonalMatsGramShmidt.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/OrthogonalMatsGramShmidt.pdf)
+* Lecture 18: Properties of determinants ![DeterminantProperties.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/DeterminantProperties.pdf)
+* Lecture 21,22: Eigenvalues, eigenvectors, diagonalization, and powers of A ![EigenDiagonalizationPowers.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/EigenDiagonalizationPowers.pdf)
+* Lecture 24: Markov matrices and Fourier serries ![MarkovMatsFourierSerries.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/MarkovMatsFourierSerries.pdf)
+* Lecture 25: Symmetric matrices and positive definiteness ![SymmetricMatsPositiveDefinite.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/SymmetricMatsPositiveDefinite.pdf)
+* Lecture 26: Complex matrices and fast Fourier transform ![ComplexMatricesFFT.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/ComplexMatricesFFT.pdf)
+* Lecture 27,28: Positive definite matrices, minima, ellipsoids, and similar matrices ![PosDefMatsMinEllipsoidSimilarMats.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/PosDefMatsMinEllipsoidSimilarMats.pdf)
+* Lecture 29: Singular value decomposition ![SVD.pdf](https://raw.github.com/AmirooR/Research/course/LinearAlegbra/master/SVD.pdf)
