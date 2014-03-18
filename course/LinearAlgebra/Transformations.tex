@@ -1,0 +1,51 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\ud}{\,\mathrm{d}}
+\theoremstyle{definition} \newtheorem{Theorem}{Theorem}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Linear Transformations, Change of basis}}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 30-32}
+\end{center}
+
+\section{Linear Transformations}
+\begin{itemize}
+\item $T(cV+dW) = cT(V) + dT(w)$
+\item $T(0) = 0$
+\item $T(x) = Ax$ is a linear transformation
+\item Coordinates come from a basis: coordinates of $v = c_1 v_1 + c_2 v_2 + \cdots + c_n v_n$ are $c_1, c_2, \cdots $
+\item Construct matrix $A$ that represents linear transformation $T$:
+\begin{itemize}
+\item $T: \mathbb{R}^n \rightarrow \mathbb{R}^m$
+\item Choose bases $v_1, \cdots, v_n$ for inputs.
+\item Choose bases $w_1, \cdots, w_m$ for outputs.
+\end{itemize}
+\item Rule to find $A$ given bases $v_1, \cdots, v_n$ and $w_1, \cdots, w_m$:
+\begin{itemize}
+\item  first column of $A$: write $T(v_1) = a_{11} w_1 + a_{21} w_2 + \cdots a_{m1} w_m$
+\item second column of $A$: write $T(v_2) = a_{12} w_1 + \cdots a_{m2} w_m$
+\item $A \left[ \text{input coordinates} \right] = \left[ \text{output coordinates} \right]$
+\end{itemize}
+\item Example: $T=\frac{\ud}{\ud x}$
+\begin{itemize}
+\item Input: $c_1 + c_2 x + c_3 x^2$, basis: $1, x, x^2$
+\item Output: $c_2 + 2 c_3 x$, basis: $1, x$
+\item $A\begin{bmatrix}c_1 \\ c_2 \\ c_3\end{bmatrix} = \begin{bmatrix} c_2 \\ 2 c_3\end{bmatrix}$
+\item $A = \begin{bmatrix} 0 & 1 & 0  \\ 0 & 0 & 2\end{bmatrix}$
+\end{itemize}
+\end{itemize}
+\end{document}
