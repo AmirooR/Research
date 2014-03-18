@@ -1,0 +1,74 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\ud}{\,\mathrm{d}}
+\theoremstyle{definition} \newtheorem{Theorem}{Theorem}
+\begin{document}
+
+\begin{center}
+In The Name of God.
+
+The Merciful, The Compassionate.
+\vskip 1cm
+{\Large\bfseries{Left and right inverse, pseudoinverse}}
+
+\vskip 0.2cm
+\tiny{notes on Gilbert Strang videos, Lecture 33}
+
+\end{center}
+
+\section{Left and right inverse}
+2-sided inverse: $A A^{-1} = I = A^{-1} A \longrightarrow r=m=n$ (full rank)
+\begin{itemize}
+\item Left inverse:
+\begin{itemize}
+\item full column rank $r=n$
+\item nullspace = $\{ \}$
+\item independent columns, zero or 1 solution to $Ax=b$
+\item $A^T A$ is a n-by-n full rank matrix
+\item $(A^T A)^{-1} A^T$ is $A^{-1}_{\text{left}}$
+\item $A^{-1}_{\text{left}} A = I_{n \times n}$
+\end{itemize}
+\item Right inverse:
+\begin{itemize}
+\item full row rank $r=m < n$ 
+\item $n(A^T)=\{ \}$, independent rows
+\item $\infty$ solutions to $Ax=b$, $n-r$ free variables
+\item $A^T (A A^T)^{-1}$ is $A^{-1}_{\text{right}}$
+\item $A A^{-1}_{\text{rigth}} = I_{m \times m}$
+\end{itemize}
+\item $A (A^T A)^{-1} A^T = P$ is a projection onto columnspace,
+ and $A^T (A A^T)^{-1} A = P'$ is a projection onto rowspace.
+\end{itemize}
+\section{Pseudoinverse ($r<m, r<n$)}
+\begin{itemize}
+\item If $x, y$ are two different vectors in rowspace, then: $Ax \neq Ay$.(proof. by supposing they are the
+ same. So, $x-y$ should be in nullspace, but it is a subtract of two vectors in rowspace! So, it is the zero vector)
+
+\item Find pseudoinverse $A^{+}$:
+\begin{enumerate}
+\item Start from SVD: $A = U \Sigma V^T$, 
+\begin{itemize}
+\item $\Sigma = \begin{bmatrix}\sigma_1 &        & 	     & 0 \\ 
+							    & \ddots & 	     &   \\
+					 	 	    & 	     & \sigma_r &   \\
+						    0	    &        &	     & 0
+				    \end{bmatrix}_{m \times n}$
+\item $\Sigma^{+} = \begin{bmatrix}1/ \sigma_1 &        & 	     & 0 \\ 
+							    & \ddots & 	     &   \\
+					 	 	    & 	     & 1/ \sigma_r &   \\
+						    0	    &        &	     & 0
+				    \end{bmatrix}_{n \times m}$
+\item $\Sigma \Sigma^{+} = \begin{bmatrix} I_{r\times r} & 0 \\ 0 & 0 \end{bmatrix}_{m \times m}$
+\item $\Sigma^{+} \Sigma = \begin{bmatrix} I_{r\times r} & 0 \\ 0 & 0 \end{bmatrix}_{n \times n}$
+\end{itemize}
+\item $A^{+} = V \Sigma^{+} U^T$
+\end{enumerate}
+\end{itemize}
+\end{document}
