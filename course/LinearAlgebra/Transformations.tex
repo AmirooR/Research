@@ -48,4 +48,35 @@ The Merciful, The Compassionate.
 \item $A = \begin{bmatrix} 0 & 1 & 0  \\ 0 & 0 & 2\end{bmatrix}$
 \end{itemize}
 \end{itemize}
+
+\section{Change of basis}
+\begin{itemize}
+\item Columns of $W =$ new basis vectors
+\item $[x]_{\text{old basis}} \rightarrow [c]_{\text{new basis}}: x = W c$
+\end{itemize}
+\section{Transformation Matrices}
+\begin{itemize}
+\item Transformation matrices with respect to different bases:
+\begin{itemize}
+\item $T$ with respect to $v_1,\cdots, v_8$ it has matrix $A$
+\item with respect to $w_1,\cdots, w_8$ it has matrix $B$
+\item $A$ is similar to $B$, $A = M^{-1} B M$, $M$ is the change of basis vector
+\end{itemize}
+\item What is $A$? using $v_1, \ldots, v_8$.
+\begin{itemize}
+\item know $T$ completely from $T(v_1), T(v_2), \cdots, T(v_8)$.
+\item Because every $x = c_1 v_1 + c_2 v_2 + \cdots, c_8 v_8$, Then $T(x) = c_1 T(v_1)  + \cdots$ .
+\begin{itemize}
+\item Write $T(v_1) = a_{11} v_1 + a_{21} v_2 + \cdots + a_{81} v_8$
+\item $T(v_2) = a_{12} v_1 + a_{22} v_2 + \cdots + a_{82} v_8$
+\end{itemize}
+\end{itemize}
+\item Eigenvector basis:
+\begin{itemize}
+\item $T(v_i) = \lambda_i v_i$
+\item $\Rightarrow A = \begin{bmatrix}\lambda_1 & \cdots & 0 \\ & \ddots & \\ 0 & \cdots & \lambda_n \end{bmatrix}$
+\end{itemize}
+\end{itemize}
+\textbf{A note:} When we have orthogonal eigenvectors: $A A^T = A^T A$ \\
+symmetric, skew symmatric (i.e., $A^T = -A$), and orthogonal matrices pass this test!
 \end{document}
